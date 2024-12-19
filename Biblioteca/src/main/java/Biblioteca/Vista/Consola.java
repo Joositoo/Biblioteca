@@ -5,8 +5,8 @@ import Biblioteca.Modelo.DAO;
 import Biblioteca.Modelo.Prestamo;
 import Biblioteca.Modelo.Usuario;
 
-import java.util.List;
 import java.util.Scanner;
+import java.util.Set;
 
 public class Consola {
     public void menuInicio() {
@@ -32,10 +32,12 @@ public class Consola {
         System.out.println("======USUARIO======");
         System.out.println("¡Hola! " + usuario.getNombre()+ ", estos son tus prestamos:");
 
-        List<Usuario> listaPrestamos = daoUsuario.findPrestamos(usuario.getId());
-        for (Usuario prestamo : listaPrestamos) {
+        Set<Prestamo> listaPrestamos = usuario.getPrestamos();
+        for (Prestamo prestamo : listaPrestamos) {
             System.out.println(prestamo);
         }
+
+
     }
 
     public void menuAdmin(Usuario usuario) {

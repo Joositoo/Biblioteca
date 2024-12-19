@@ -54,9 +54,4 @@ public class DAO<T, ID> {
     public T findByUniqueValue(String column, String value){
         return em.createQuery("SELECT e FROM " +clase.getSimpleName()+ " e WHERE " +column+ " = \"" +value+ "\"", clase).getSingleResult();
     }
-
-    /*public List<T> findPrestamos(int id){
-        return em.createQuery("SELECT e.isbn, p.fechaInicio, p.fechaDevolucion FROM Prestamo p JOIN Ejemplar e ON " +
-                "e.id = p.ejemplar_id JOIN Usuario u ON u.id = " +id, clase).getResultList();
-    }*/
 }
