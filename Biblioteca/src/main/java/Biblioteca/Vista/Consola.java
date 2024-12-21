@@ -1,6 +1,7 @@
 package Biblioteca.Vista;
 
 import Biblioteca.Controlador.Control;
+import Biblioteca.Controlador.ControlLibro;
 import Biblioteca.Modelo.DAO;
 import Biblioteca.Modelo.Prestamo;
 import Biblioteca.Modelo.Usuario;
@@ -85,6 +86,6 @@ public class Consola {
         System.out.println("¿Qué quieres hacer? ");
         eleccion = scann.nextInt();
 
-        Control.gestionLibros(eleccion);
+        ControlLibro.gestionLibros(eleccion);
     }
 }
