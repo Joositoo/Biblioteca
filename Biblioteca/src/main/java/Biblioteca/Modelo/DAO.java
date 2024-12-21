@@ -46,6 +46,10 @@ public class DAO<T, ID> {
         return em.find(clase, id);
     }
 
+    public T findByString(String s){
+        return em.find(clase, s);
+    }
+
     //Select all
     public List<T> findAll(){
         return em.createQuery("FROM " + clase.getSimpleName(), clase).getResultList();

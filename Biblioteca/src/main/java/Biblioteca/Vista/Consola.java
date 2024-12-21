@@ -9,9 +9,9 @@ import java.util.Scanner;
 import java.util.Set;
 
 public class Consola {
-    public void menuInicio() {
-        Scanner scann = new Scanner(System.in);
-        Control control = new Control();
+    static Scanner scann = new Scanner(System.in);
+
+    public static void menuInicio() {
 
         String correo;
         String password;
@@ -23,14 +23,19 @@ public class Consola {
         System.out.print("Introduce tu password: ");
         password = scann.nextLine();
 
-        control.existeUsuario(correo, password);
+        Control.existeUsuario(correo, password);
     }
 
-    public void menuUsuarioNormal(Usuario usuario) {
+    public static void menuUsuarioNormal(Usuario usuario) {
         DAO<Usuario, Integer> daoUsuario = new DAO<Usuario, Integer>(Usuario.class, Integer.class);
 
-        System.out.println("======USUARIO======");
-        System.out.println("¡Hola! " + usuario.getNombre()+ ", estos son tus prestamos:");
+        System.out.println("*************************************");
+        System.out.println("*                                   *");
+        System.out.println("*             USUARIO               *");
+        System.out.println("*                                   *");
+        System.out.println("*************************************");
+        System.out.println("                                     ");
+        System.out.println("¡Hola! " + usuario.getNombre()+ ", estos son tus prestamos:\n");
 
         Set<Prestamo> listaPrestamos = usuario.getPrestamos();
         for (Prestamo prestamo : listaPrestamos) {
@@ -40,12 +45,46 @@ public class Consola {
 
     }
 
-    public void menuAdmin(Usuario usuario) {
-        System.out.println("======Administrador======");
-        System.out.println("1. Registrar libro");
-        System.out.println("2. Registrar ejemplar de libro");
-        System.out.println("3. Registrar usuario");
-        System.out.println("4. Registrar un prestamo");
+    public static void menuAdmin() {
+        int eleccion;
 
+        System.out.println("*************************************");
+        System.out.println("*                                   *");
+        System.out.println("*          ADMINISTRADOR            *");
+        System.out.println("*                                   *");
+        System.out.println("*************************************");
+        System.out.println("*  1. Gestionar libros              *");
+        System.out.println("*  2. Gestionar ejemplares          *");
+        System.out.println("*  3. Gestionar usuarios            *");
+        System.out.println("*  4. Gestionar préstamos           *");
+        System.out.println("*  5. Cerrar sesión                 *");
+        System.out.println("*************************************");
+
+        System.out.print("¿Con qué quieres trabajar? Indica un número: ");
+        eleccion = scann.nextInt();
+
+        Control.gestionAdmin(eleccion);
+    }
+
+    public static void menuLibros(){
+        int eleccion;
+
+        System.out.println("**************************************");
+        System.out.println("*                                     *");
+        System.out.println("*               Libros                *");
+        System.out.println("*                                     *");
+        System.out.println("***************************************");
+        System.out.println("*  1. Añadir un  libro                *");
+        System.out.println("*  2. Modificar un libro              *");
+        System.out.println("*  3. Eliminar un libro               *");
+        System.out.println("*  4. Ver todos los libros            *");
+        System.out.println("*  5. Volver al menu admin.           *");
+        System.out.println("*  6. Cerrar sesión                   *");
+        System.out.println("***************************************");
+
+        System.out.println("¿Qué quieres hacer? ");
+        eleccion = scann.nextInt();
+
+        Control.gestionLibros(eleccion);
     }
 }
