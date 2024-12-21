@@ -24,9 +24,12 @@ public class ControlLibro {
                 verLibros();
                 break;
             case 5:
-                Consola.menuAdmin();
+                seleccionarLibro();
                 break;
             case 6:
+                Consola.menuAdmin();
+                break;
+            case 7:
                 break;
             default:
                 System.out.println("Opcion no valida");
@@ -95,7 +98,6 @@ public class ControlLibro {
     public static void eliminaLibro(){
         String isbn;
 
-
         System.out.println("*************************************");
         System.out.println("*                                   *");
         System.out.println("*         ELIMINAR LIBRO            *");
@@ -130,6 +132,26 @@ public class ControlLibro {
         for (Libro libro : listaLibros){
             System.out.println(libro);
         }
+
+        Consola.menuLibros();
+    }
+
+    public static void seleccionarLibro(){
+        String isbn;
+        DAO<Libro, Integer> daoLibro = new DAO<>(Libro.class, Integer.class);
+
+        System.out.println("***************************************");
+        System.out.println("*                                     *");
+        System.out.println("*         SELECCIONA LIBRO            *");
+        System.out.println("*                                     *");
+        System.out.println("***************************************");
+        System.out.println("                                       ");
+        System.out.print("Indica el isbn del libro: ");
+        isbn = scann.nextLine();
+
+        Libro libro = daoLibro.findByString(isbn);
+
+        System.out.println("El libro es: \n" +libro+ "\n");
 
         Consola.menuLibros();
     }

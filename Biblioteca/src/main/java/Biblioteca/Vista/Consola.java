@@ -1,6 +1,7 @@
 package Biblioteca.Vista;
 
 import Biblioteca.Controlador.Control;
+import Biblioteca.Controlador.ControlEjemplar;
 import Biblioteca.Controlador.ControlLibro;
 import Biblioteca.Modelo.DAO;
 import Biblioteca.Modelo.Prestamo;
@@ -72,20 +73,45 @@ public class Consola {
 
         System.out.println("**************************************");
         System.out.println("*                                     *");
-        System.out.println("*               Libros                *");
+        System.out.println("*               LIBROS                *");
         System.out.println("*                                     *");
         System.out.println("***************************************");
         System.out.println("*  1. Añadir un  libro                *");
         System.out.println("*  2. Modificar un libro              *");
         System.out.println("*  3. Eliminar un libro               *");
         System.out.println("*  4. Ver todos los libros            *");
-        System.out.println("*  5. Volver al menu admin.           *");
-        System.out.println("*  6. Cerrar sesión                   *");
+        System.out.println("*  5. Seleccionar un libro            *");
+        System.out.println("*  6. Volver al menu admin.           *");
+        System.out.println("*  7. Cerrar sesión                   *");
         System.out.println("***************************************");
 
         System.out.println("¿Qué quieres hacer? ");
         eleccion = scann.nextInt();
 
         ControlLibro.gestionLibros(eleccion);
+    }
+
+    public static void menuEjemplares(){
+        int eleccion;
+
+        System.out.println("*******************************************");
+        System.out.println("*                                         *");
+        System.out.println("*               Ejemplares                *");
+        System.out.println("*                                         *");
+        System.out.println("*******************************************");
+        System.out.println("*  1. Añadir un  ejemplar                 *");
+        System.out.println("*  2. Modificar un ejemplar               *");
+        System.out.println("*  3. Eliminar un ejemplar                *");
+        System.out.println("*  4. Ver todos los ejemplares            *");
+        System.out.println("*  5. Seleccionar un ejemplar             *");
+        System.out.println("*  6. Ver el stock disponible             *");
+        System.out.println("*  7. Volver al menu admin.               *");
+        System.out.println("*  8. Cerrar sesión                       *");
+        System.out.println("*******************************************");
+
+        System.out.println("¿Qué quieres hacer? ");
+        eleccion = scann.nextInt();
+
+        ControlEjemplar.gestionEjemplares(eleccion);
     }
 }

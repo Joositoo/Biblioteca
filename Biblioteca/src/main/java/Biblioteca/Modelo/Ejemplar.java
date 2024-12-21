@@ -36,6 +36,12 @@ public class Ejemplar {
         this.prestamos = new LinkedHashSet<>();
     }
 
+    public Ejemplar (Libro isbn, String estado) {
+        this.isbn = isbn;
+        this.estado = estado;
+        this.prestamos = new LinkedHashSet<>();
+    }
+
     public Ejemplar(){}
 
     public Integer getId() {

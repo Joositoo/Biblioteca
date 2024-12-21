@@ -47,6 +47,7 @@ public class Control {
                 Consola.menuLibros();
                 break;
             case 2:
+                Consola.menuEjemplares();
                 break;
             case 3:
                 break;
