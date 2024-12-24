@@ -50,6 +50,7 @@ public class Control {
                 Consola.menuEjemplares();
                 break;
             case 3:
+                Consola.menuGestionUsuarios();
                 break;
             case 4:
                 break;
@@ -60,21 +61,4 @@ public class Control {
                 Consola.menuAdmin();
         }
     }
-
-    /*public static void registrarEjemplar(){
-        int id;
-        String isbn;
-        String estado;
-
-        System.out.println("****************************************");
-        System.out.println("*                                      *");
-        System.out.println("*        REGISTRAR EJEMPLAR            *");
-        System.out.println("*                                      *");
-        System.out.println("****************************************");
-        System.out.println("                                        ");
-
-        System.out.println("Introduce el id del ejemplar");
-
-
-    }*/
 }

@@ -3,6 +3,7 @@ package Biblioteca.Vista;
 import Biblioteca.Controlador.Control;
 import Biblioteca.Controlador.ControlEjemplar;
 import Biblioteca.Controlador.ControlLibro;
+import Biblioteca.Controlador.ControlUsuario;
 import Biblioteca.Modelo.DAO;
 import Biblioteca.Modelo.Prestamo;
 import Biblioteca.Modelo.Usuario;
@@ -96,7 +97,7 @@ public class Consola {
 
         System.out.println("*******************************************");
         System.out.println("*                                         *");
-        System.out.println("*               Ejemplares                *");
+        System.out.println("*               EJEMPLARES                *");
         System.out.println("*                                         *");
         System.out.println("*******************************************");
         System.out.println("*  1. Añadir un  ejemplar                 *");
@@ -113,5 +114,29 @@ public class Consola {
         eleccion = scann.nextInt();
 
         ControlEjemplar.gestionEjemplares(eleccion);
+    }
+
+    public static void menuGestionUsuarios(){
+        int eleccion;
+
+        System.out.println("*******************************************");
+        System.out.println("*                                          *");
+        System.out.println("*               USUARIOS                   *");
+        System.out.println("*                                          *");
+        System.out.println("********************************************");
+        System.out.println("*  1. Añadir un usuario                    *");
+        System.out.println("*  2. Modificar un usuario                 *");
+        System.out.println("*  3. Eliminar un usuario                  *");
+        System.out.println("*  4. Ver todos los usuario                *");
+        System.out.println("*  5. Seleccionar un usuario               *");
+        System.out.println("*  6. Registrar penalización               *");
+        System.out.println("*  7. Volver al menu admin.                *");
+        System.out.println("*  8. Cerrar sesión                        *");
+        System.out.println("********************************************");
+
+        System.out.println("¿Qué quieres hacer? ");
+        eleccion = scann.nextInt();
+
+        ControlUsuario.gestionUsuarios(eleccion);
     }
 }

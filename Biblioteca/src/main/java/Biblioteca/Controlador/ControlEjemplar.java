@@ -68,7 +68,7 @@ public class ControlEjemplar {
 
         Ejemplar ejemplar = new Ejemplar(libro, estado);
 
-        daoEjemplar.update(ejemplar);
+        daoEjemplar.insert(ejemplar);
 
         Consola.menuEjemplares();
     }

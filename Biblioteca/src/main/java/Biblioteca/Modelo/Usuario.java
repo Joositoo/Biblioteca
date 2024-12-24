@@ -36,8 +36,7 @@ public class Usuario {
     @OneToMany(mappedBy = "usuario")
     private Set<Prestamo> prestamos = new LinkedHashSet<>();
 
-    public Usuario(Integer id, String dni, String nombre, String email, String password, String tipo) {
-        this.id = id;
+    public Usuario(String dni, String nombre, String email, String password, String tipo) {
         this.dni = dni;
         this.nombre = nombre;
         this.email = email;
@@ -45,8 +44,7 @@ public class Usuario {
         this.tipo = tipo;
     }
 
-    public Usuario(Integer id, String dni, String nombre, String email, String password, String tipo, LocalDate penalizacionHasta) {
-        this.id = id;
+    public Usuario(String dni, String nombre, String email, String password, String tipo, LocalDate penalizacionHasta) {
         this.dni = dni;
         this.nombre = nombre;
         this.email = email;
