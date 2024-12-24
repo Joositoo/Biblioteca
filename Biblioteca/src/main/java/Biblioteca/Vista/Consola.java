@@ -1,9 +1,6 @@
 package Biblioteca.Vista;
 
-import Biblioteca.Controlador.Control;
-import Biblioteca.Controlador.ControlEjemplar;
-import Biblioteca.Controlador.ControlLibro;
-import Biblioteca.Controlador.ControlUsuario;
+import Biblioteca.Controlador.*;
 import Biblioteca.Modelo.DAO;
 import Biblioteca.Modelo.Prestamo;
 import Biblioteca.Modelo.Usuario;
@@ -138,5 +135,28 @@ public class Consola {
         eleccion = scann.nextInt();
 
         ControlUsuario.gestionUsuarios(eleccion);
+    }
+
+    public static void menuPrestamos(){
+        int eleccion;
+
+        System.out.println("*******************************************");
+        System.out.println("*                                         *");
+        System.out.println("*               PRÉSTAMOS                 *");
+        System.out.println("*                                         *");
+        System.out.println("*******************************************");
+        System.out.println("*  1. Añadir un  préstamo                 *");
+        System.out.println("*  2. Modificar un préstamo               *");
+        System.out.println("*  3. Eliminar un préstamo                *");
+        System.out.println("*  4. Ver todos los préstamos             *");
+        System.out.println("*  5. Seleccionar un préstamo             *");
+        System.out.println("*  6. Volver al menu admin.               *");
+        System.out.println("*  7. Cerrar sesión                       *");
+        System.out.println("*******************************************");
+
+        System.out.println("¿Qué quieres hacer? ");
+        eleccion = scann.nextInt();
+
+        ControlPrestamo.gestionPrestamo(eleccion);
     }
 }

@@ -194,7 +194,7 @@ public class ControlUsuario {
     }
 
     public static void registraPenaliz(){
-        
+
     }
 
 }

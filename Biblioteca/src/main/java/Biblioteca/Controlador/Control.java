@@ -5,8 +5,6 @@ import Biblioteca.Modelo.Usuario;
 import Biblioteca.Vista.Consola;
 import jakarta.persistence.NoResultException;
 
-import java.util.Scanner;
-
 public class Control {
 
     public static void existeUsuario(String correo, String password){
@@ -53,6 +51,7 @@ public class Control {
                 Consola.menuGestionUsuarios();
                 break;
             case 4:
+                Consola.menuPrestamos();
                 break;
             case 5:
                 break;
