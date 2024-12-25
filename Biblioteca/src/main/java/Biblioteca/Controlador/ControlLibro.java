@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class ControlLibro {
     static Scanner scann = new Scanner(System.in);
-    public static void gestionLibros(int i){
+    public static void gestionLibros(int i) {
         switch (i){
             case 1:
                 registraLibro();
@@ -37,7 +37,7 @@ public class ControlLibro {
         }
     }
 
-    public static void registraLibro(){
+    public static void registraLibro() {
         String isbn;
         String titulo;
         String autor;
@@ -66,7 +66,7 @@ public class ControlLibro {
         Consola.menuLibros();
     }
 
-    public static void modificarLibro(){
+    public static void modificarLibro() {
         String isbn;
         String titulo;
         String autor;
@@ -95,7 +95,7 @@ public class ControlLibro {
         Consola.menuLibros();
     }
 
-    public static void eliminaLibro(){
+    public static void eliminaLibro() {
         String isbn;
 
         System.out.println("*************************************");
@@ -116,7 +116,7 @@ public class ControlLibro {
         Consola.menuLibros();
     }
 
-    public static void verLibros(){
+    public static void verLibros() {
         List<Libro> listaLibros = null;
 
         DAO<Libro, Integer> daoLibro = new DAO<>(Libro.class, Integer.class);
@@ -136,7 +136,7 @@ public class ControlLibro {
         Consola.menuLibros();
     }
 
-    public static void seleccionarLibro(){
+    public static void seleccionarLibro() {
         String isbn;
         DAO<Libro, Integer> daoLibro = new DAO<>(Libro.class, Integer.class);
 

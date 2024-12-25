@@ -41,8 +41,6 @@ public class Consola {
         for (Prestamo prestamo : listaPrestamos) {
             System.out.println(prestamo);
         }
-
-
     }
 
     public static void menuAdmin() {
@@ -66,7 +64,7 @@ public class Consola {
         Control.gestionAdmin(eleccion);
     }
 
-    public static void menuLibros(){
+    public static void menuLibros() {
         int eleccion;
 
         System.out.println("**************************************");
@@ -89,7 +87,7 @@ public class Consola {
         ControlLibro.gestionLibros(eleccion);
     }
 
-    public static void menuEjemplares(){
+    public static void menuEjemplares() {
         int eleccion;
 
         System.out.println("*******************************************");
@@ -113,23 +111,23 @@ public class Consola {
         ControlEjemplar.gestionEjemplares(eleccion);
     }
 
-    public static void menuGestionUsuarios(){
+    public static void menuGestionUsuarios() {
         int eleccion;
 
-        System.out.println("*******************************************");
-        System.out.println("*                                          *");
-        System.out.println("*               USUARIOS                   *");
-        System.out.println("*                                          *");
-        System.out.println("********************************************");
-        System.out.println("*  1. Añadir un usuario                    *");
-        System.out.println("*  2. Modificar un usuario                 *");
-        System.out.println("*  3. Eliminar un usuario                  *");
-        System.out.println("*  4. Ver todos los usuario                *");
-        System.out.println("*  5. Seleccionar un usuario               *");
-        System.out.println("*  6. Registrar penalización               *");
-        System.out.println("*  7. Volver al menu admin.                *");
-        System.out.println("*  8. Cerrar sesión                        *");
-        System.out.println("********************************************");
+        System.out.println("*************************************************");
+        System.out.println("*                                               *");
+        System.out.println("*               USUARIOS                        *");
+        System.out.println("*                                               *");
+        System.out.println("*************************************************");
+        System.out.println("*  1. Añadir un usuario                         *");
+        System.out.println("*  2. Modificar un usuario                      *");
+        System.out.println("*  3. Eliminar un usuario                       *");
+        System.out.println("*  4. Ver todos los usuario                     *");
+        System.out.println("*  5. Seleccionar un usuario                    *");
+        System.out.println("*  6. Ver préstamos de un usuario               *");
+        System.out.println("*  7. Volver al menu admin.                     *");
+        System.out.println("*  8. Cerrar sesión                             *");
+        System.out.println("*************************************************");
 
         System.out.println("¿Qué quieres hacer? ");
         eleccion = scann.nextInt();
@@ -137,7 +135,7 @@ public class Consola {
         ControlUsuario.gestionUsuarios(eleccion);
     }
 
-    public static void menuPrestamos(){
+    public static void menuPrestamos() {
         int eleccion;
 
         System.out.println("*******************************************");

@@ -162,7 +162,7 @@ public class ControlEjemplar {
         Consola.menuEjemplares();
     }
 
-    public static void controlarStock(){
+    public static void controlarStock() {
         int contador = 0;
         List<Ejemplar> ejemplares;
         List<Ejemplar> ejemplaresDisponibles = new ArrayList<>();

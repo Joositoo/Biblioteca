@@ -65,10 +65,29 @@ public class ControlPrestamo {
         Usuario usuario = daoUsuario.findById(idUsuario);
         Ejemplar ejemplar = daoEjemplar.findById(idEjemplar);
 
+        if (usuario.getPenalizacionHasta().isAfter(LocalDate.now())) {
+            System.out.println("No puedes realizar ningún prestamo, tienes una penalización hasta el día " +usuario.getPenalizacionHasta());
+            Consola.menuPrestamos();
+            return;
+        }
 
-        Prestamo prestamo = new Prestamo(usuario, ejemplar, fechaInicio, fechaDevolucion);
+        if (!ejemplar.getEstado().equals("Prestado")){
+            ejemplar.setEstado("Prestado");
 
-        daoPrestamo.insert(prestamo);
+            if (usuario.getPrestamos().size() < 3){
+                Prestamo prestamo = new Prestamo(usuario, ejemplar, fechaInicio, fechaDevolucion);
+                usuario.getPrestamos().add(prestamo);
+
+                daoEjemplar.update(ejemplar);
+                daoPrestamo.insert(prestamo);
+            }
+            else{
+                System.out.println(usuario.getNombre()+ " ya cuenta con 3 prestamos");
+            }
+        }
+        else {
+            System.out.println("El libro ya está prestado");
+        }
 
         Consola.menuPrestamos();
     }
@@ -93,8 +112,12 @@ public class ControlPrestamo {
         idEjemplar = scann.nextInt();
 
         Ejemplar ejemplar = daoEjemplar.findById(idEjemplar);
+        ejemplar.setEstado("Prestado");
+        daoEjemplar.update(ejemplar);
 
         Prestamo prestamo = daoPrestamo.findById(id);
+        prestamo.getEjemplar().setEstado("Disponible");
+        daoPrestamo.update(prestamo);
 
         prestamo.setEjemplar(ejemplar);
         prestamo.setFechaInicio(LocalDate.now());
@@ -107,7 +130,9 @@ public class ControlPrestamo {
 
     public static void eliminaPrestamo() {
         int id;
+        LocalDate fechaDevolucion = LocalDate.now();
         DAO<Prestamo, Integer> daoPrestamo = new DAO<>(Prestamo.class, Integer.class);
+        DAO<Usuario, Integer> daoUsuario = new DAO<>(Usuario.class, Integer.class);
 
         System.out.println("*****************************************");
         System.out.println("*                                       *");
@@ -120,6 +145,23 @@ public class ControlPrestamo {
 
         Prestamo prestamo = daoPrestamo.findById(id);
 
+        prestamo.getEjemplar().setEstado("Disponible");
+
+        daoPrestamo.update(prestamo);
+
+        if (fechaDevolucion.isAfter(prestamo.getFechaDevolucion())){
+
+            System.out.println(prestamo.getUsuario().getNombre()+ "Tiene una penalización de 15 días");
+            if (prestamo.getUsuario().getPenalizacionHasta() == null){
+                prestamo.getUsuario().setPenalizacionHasta(LocalDate.now().plusDays(15));
+            }
+            else {
+                LocalDate penalizacion = prestamo.getUsuario().getPenalizacionHasta();
+                prestamo.getUsuario().setPenalizacionHasta(penalizacion.plusDays(15));
+            }
+            daoUsuario.update(prestamo.getUsuario());
+            daoPrestamo.update(prestamo);
+        }
         daoPrestamo.delete(prestamo);
 
         Consola.menuPrestamos();
@@ -145,7 +187,7 @@ public class ControlPrestamo {
         Consola.menuPrestamos();
     }
 
-    public static void seleccionaPrestamo(){
+    public static void seleccionaPrestamo() {
         int id;
         DAO<Prestamo, Integer> daoPrestamo = new DAO<>(Prestamo.class, Integer.class);
 

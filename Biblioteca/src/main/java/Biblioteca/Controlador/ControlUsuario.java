@@ -1,18 +1,16 @@
 package Biblioteca.Controlador;
 
-import Biblioteca.Modelo.DAO;
-import Biblioteca.Modelo.Ejemplar;
-import Biblioteca.Modelo.Libro;
-import Biblioteca.Modelo.Usuario;
+import Biblioteca.Modelo.*;
 import Biblioteca.Vista.Consola;
 
 import java.util.List;
 import java.util.Scanner;
+import java.util.Set;
 
 public class ControlUsuario {
     static Scanner scann = new Scanner(System.in);
 
-    public static void gestionUsuarios(int i){
+    public static void gestionUsuarios(int i) {
         switch (i){
             case 1:
                 registraUsuario();
@@ -30,7 +28,7 @@ public class ControlUsuario {
                 seleccionaUsuario();
                 break;
             case 6:
-                registraPenaliz();
+                verPrestamosUsuario();
                 break;
             case 7:
                 Consola.menuAdmin();
@@ -40,7 +38,7 @@ public class ControlUsuario {
         }
     }
 
-    public static void registraUsuario(){
+    public static void registraUsuario() {
         String dni;
         String nombre;
         String email;
@@ -81,7 +79,7 @@ public class ControlUsuario {
         Consola.menuGestionUsuarios();
     }
 
-    public static void modificaUsuario(){
+    public static void modificaUsuario() {
         int id;
         String dni;
         String nombre;
@@ -133,7 +131,7 @@ public class ControlUsuario {
         Consola.menuGestionUsuarios();
     }
 
-    public static void eliminaUsuario(){
+    public static void eliminaUsuario() {
         int id;
         DAO<Usuario, Integer> daoUsuario = new DAO<>(Usuario.class, Integer.class);
 
@@ -154,7 +152,7 @@ public class ControlUsuario {
         Consola.menuGestionUsuarios();
     }
 
-    public static void verUsuarios(){
+    public static void verUsuarios() {
         DAO<Usuario, Integer> daoUsuario = new DAO<>(Usuario.class, Integer.class);
         List<Usuario> listaUsuarios;
 
@@ -174,7 +172,7 @@ public class ControlUsuario {
         Consola.menuGestionUsuarios();
     }
 
-    public static void seleccionaUsuario(){
+    public static void seleccionaUsuario() {
         int id;
         DAO<Usuario, Integer> daoUsuario = new DAO<>(Usuario.class, Integer.class);
 
@@ -193,8 +191,27 @@ public class ControlUsuario {
         Consola.menuGestionUsuarios();
     }
 
-    public static void registraPenaliz(){
+    public static void verPrestamosUsuario(){
+        int id;
+        DAO<Usuario, Integer> daoUsuario = new DAO<>(Usuario.class, Integer.class);
 
+        System.out.println("******************************************");
+        System.out.println("*                                        *");
+        System.out.println("*         SELECCIONA USUARIO             *");
+        System.out.println("*                                        *");
+        System.out.println("******************************************");
+        System.out.println("                                          ");
+        System.out.print("Indica el id del usuario: ");
+        id = scann.nextInt();
+
+        Usuario usuario = daoUsuario.findById(id);
+        Set<Prestamo> listaPrestamos = usuario.getPrestamos();
+
+        for (Prestamo p : listaPrestamos) {
+            System.out.println(p);
+        }
+
+        Consola.menuGestionUsuarios();
     }
 
 }

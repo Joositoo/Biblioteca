@@ -7,7 +7,7 @@ import jakarta.persistence.NoResultException;
 
 public class Control {
 
-    public static void existeUsuario(String correo, String password){
+    public static void existeUsuario(String correo, String password) {
         DAO<Usuario, Integer> daoUsuario = new DAO<>(Usuario.class, Integer.class);
         Usuario usuario = null;
 
@@ -30,7 +30,7 @@ public class Control {
         }
     }
 
-    public static void tipoUsuario(Usuario u){
+    public static void tipoUsuario(Usuario u) {
         if (u.getTipo().equals("normal")){
             Consola.menuUsuarioNormal(u);
         }
@@ -39,7 +39,7 @@ public class Control {
         }
     }
 
-    public static void gestionAdmin(int i){
+    public static void gestionAdmin(int i) {
         switch (i){
             case 1:
                 Consola.menuLibros();
