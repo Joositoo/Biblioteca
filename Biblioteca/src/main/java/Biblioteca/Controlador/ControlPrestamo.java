@@ -162,6 +162,9 @@ public class ControlPrestamo {
             daoUsuario.update(prestamo.getUsuario());
             daoPrestamo.update(prestamo);
         }
+        prestamo.getUsuario().getPrestamos().remove(prestamo);
+
+        daoUsuario.update(prestamo.getUsuario());
         daoPrestamo.delete(prestamo);
 
         Consola.menuPrestamos();
